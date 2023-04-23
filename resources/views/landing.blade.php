@@ -96,10 +96,15 @@ Coded by www.creative-tim.com
               <span class="nav-link-inner--text">Mas...</span>
             </a>
             <div class="dropdown-menu">
+              @if (auth()->check())
               <a href="../examples/landing.html" class="dropdown-item">Historial de compras</a>
               <a href="../examples/profile.html" class="dropdown-item">Mi Cuenta</a>
+              <a href="" class="dropdown-item">{{auth()->user()->name}}</a>
+              <a href="{{route('logout')}}" class="dropdown-item">Cerrar Sesion</a>
+              @else
               <a href="{{route('login')}}" class="dropdown-item">Iniciar sesion</a>
               <a href="{{route('register')}}" class="dropdown-item">Registrar</a>
+              @endif
             </div>
             
           </li>
