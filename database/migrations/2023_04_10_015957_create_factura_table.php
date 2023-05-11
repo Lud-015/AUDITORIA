@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('factura', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('invoice_number');
+            $table->string('invoice_number');
             $table->decimal('total_paid');
             $table->date('purchase_date');
             $table->timestamps();

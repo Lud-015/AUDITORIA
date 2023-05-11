@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+
+        return view('profile');
     }
 
     /**
@@ -26,6 +28,21 @@ class UserController extends Controller
     {
         //
     }
+
+
+        /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function profile($id)
+    {
+        $user = User::find($id);
+     
+        return view('profile')->with('user', $user); 
+    }
+
+
 
     /**
      * Store a newly created resource in storage.

@@ -1,17 +1,4 @@
 
-<!--
-=========================================================
-* Argon Design System - v1.2.2
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-design-system
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,9 +6,9 @@ Coded by www.creative-tim.com
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="../assets/img/brand/logo.png">
   <title>
-    Argon Design System by Creative Tim
+    MegaMarket
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -74,6 +61,13 @@ Coded by www.creative-tim.com
               <span class="nav-link-inner--text">Productos</span>
             </a>
             <div class="dropdown-menu">
+              @if (auth()->check())
+                @if (auth()->user()->role_id == 1)
+                  
+                <a href="{{route('products.indexStore')}}" class="dropdown-item">Agregar Productos</a>
+                <a href="" class="dropdown-item">Administrar Productos</a>
+                @endif
+              @endif
               <a href="" class="dropdown-item">Liquidos</a>
               <a href="" class="dropdown-item">Verduras y Frutas</a>
               <a href="" class="dropdown-item">Tecnologia</a>
@@ -97,9 +91,7 @@ Coded by www.creative-tim.com
             </a>
             <div class="dropdown-menu">
               @if (auth()->check())
-              <a href="../examples/landing.html" class="dropdown-item">Historial de compras</a>
-              <a href="../examples/profile.html" class="dropdown-item">Mi Cuenta</a>
-              <a href="" class="dropdown-item">{{auth()->user()->name}}</a>
+              <a href="/useruid/{{auth()->user()->id}}" class="dropdown-item">Mi Cuenta</a>
               <a href="{{route('logout')}}" class="dropdown-item">Cerrar Sesion</a>
               @else
               <a href="{{route('login')}}" class="dropdown-item">Iniciar sesion</a>
@@ -174,9 +166,11 @@ Coded by www.creative-tim.com
           <div class="col px-0">
             <div class="row align-items-center justify-content-center">
               <div class="col-lg-6 text-center">
+                
                 <h1 class="text-white display-1">Compras al instante!!</h1>
                 <h2 class="display-4 font-weight-normal text-white">Nunca sabes lo que falta en tu hogar!</h2>
               </div>
+
             </div>
           </div>
         </div>
@@ -188,14 +182,15 @@ Coded by www.creative-tim.com
 
       <nav class="navbar navbar-dark bg-default">
         <div class="container">
-          <span class="navbar-brand" href="javascript:;">Buscar Producto</span>
-
+          <a class="navbar-brand" href="{{route('productos' )}}">Buscar Productos</a>
           <div class="input-group mb-4">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
-            </div>
             <input class="form-control" placeholder="Search" type="text">
+            <button class="btn btn-secondary" type="button">
+              <i class="fa fa-search"></i>
+            </button>
+            
           </div>
+         
         </div>
       </nav>
 

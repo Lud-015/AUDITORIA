@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('invoice_id');
             $table->foreign('invoice_id')->references('id')->on('factura');
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('productos');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->integer('quantity');
             $table->decimal('unit_price');
             $table->decimal('total_price');           
